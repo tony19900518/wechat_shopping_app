@@ -1,0 +1,33 @@
+<view class='banner_container'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <swiper-item>
+      <image src="{{imgUrls}}" class="slide-image" mode='aspectFit' />
+    </swiper-item>
+  </swiper>
+</view>
+<view class='nameAndPrice'>
+  <text>{{name}}</text>
+  <text>￥{{price}}</text>
+</view>
+<view class='shopLocation'>
+  <image src='/img/shop.png' />
+  <text>世纪联华上海黄浦店</text>
+</view>
+<view class='footer'>
+  <view class='footer_container'>
+    <navigator url="/pages/cart/cart" open-type="switchTab">
+      <image src='/img/shopping-bag.png' />
+    </navigator>
+    <view class='priceBox'>
+      <text class='total'>小计:￥{{totalPrice}}</text>
+      <text wx:if="{{totalPrice<58}}" class="less">再买{{58-totalPrice}}元免首重运费</text>
+      <text class="less" wx:else>已满58元免首重运费</text>
+    </view>
+    <view class='button' bindtap='addToCart'>
+      加入购物车
+    </view>
+  </view>
+</view>
+<navigator url="/pages/cart/cart" open-type="switchTab">
+  <view class='itemNum'>{{itemNum}}</view>
+</navigator>

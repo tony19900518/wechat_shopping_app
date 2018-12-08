@@ -1,0 +1,47 @@
+<view class='window'>
+  <view class='header_container'>
+    <view class='header_left'>
+      <navigator url='../location/location'>
+        <view class='location_box'>
+          <image src='/img/weizhi.png' class='location_icon'></image>
+          <text>{{address}}</text>
+        </view>
+      </navigator>
+    </view>
+    <view class='header_middle'>
+      <navigator url='../search/search'>
+        <view class='search_box'>
+          搜索您想要的商品
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class='mainBox'>
+    <view class='mainBox_left'>
+      <scroll-view scroll-y class="scroll_left">
+        <view wx:for="{{scrollBarList}}" wx:key="{{index}}">
+          <view class="first_list {{item.active?'first_active':''}}" data-index="{{index}}" bindtap='switchTo'>{{item.txt}}</view>
+          <view wx:if="{{item.active}}" class="{{item.active?'second_active':''}}">
+            <view wx:for="{{item.second}}" wx:key="{{index}}">
+              <view class='second_list'>{{item.txt}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='mainBox_right'>
+      <scroll-view scroll-y class="scroll_right">
+        <view wx:for="{{itemList}}" wx:key="{{index}}" class='rightBox_container'>
+          <navigator url='../detail/detail?id={{item.id}}'>
+            <image src='{{item.imgUrl}}' class='scroll_img' />
+          </navigator>
+          <view class='name_price'>
+            <view class="scroll_name">{{item.name}}</view>
+            <text class='scroll_newPrice'>￥{{item.price}}</text>
+          </view>
+          <text class='scroll_btn' bindtap='addToCart' data-id="{{item.id}}">+</text>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

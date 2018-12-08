@@ -1,0 +1,139 @@
+<view class='header_container'>
+
+  <view class='header_left'>
+    <navigator url='../location/location'>
+      <view class='location_box'>
+        <image src='/img/weizhi.png' class='location_icon'></image>
+        <text>{{address}}</text>
+      </view>
+    </navigator>
+  </view>
+  <view class='header_middle'>
+    <navigator url='../search/search'>
+      <view class='search_box'>
+        <image src='/img/search.png' class='search_icon'></image>
+        <text>搜索您想要的商品</text>
+      </view>
+    </navigator>
+  </view>
+  <image src='/img/scan.png' class='scan_icon' bindtap='useScan'></image>
+
+</view>
+
+<view class='banner_container'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class='scroll_bar'>
+  <swiper indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}">
+    <block>
+      <swiper-item>
+        <view wx:for="{{ scrollBarList }}" wx:key="{{ index }}" wx:if="{{ index < 5 }}">
+          <image src='{{item.url}}'></image>
+          <text>{{item.txt}}</text>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view wx:for="{{ scrollBarList }}" wx:key="{{ index }}" wx:if="{{ index > 4 }}">
+          <image src='{{item.url}}'></image>
+          <text>{{item.txt}}</text>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<navigator url='../discount/discount'>
+  <view class='sideBtn'>
+    <text>我</text>
+    <text>的</text>
+    <text>券</text>
+    <text decode='nbsp'>&lt;</text>
+  </view>
+</navigator>
+
+<view class='ad'>
+  <image src='http://image4.suning.cn/uimg/cms/img/154321843370477832.png' />
+  <image src='http://img23.iblimg.com/market-2/images/content/683228170.jpg' />
+</view>
+
+<view class='countdown'>
+  <text class='countdown_txt'>天 天 抢</text>
+  <view class='countdown_clock'>
+    <text wx:if="{{hh>=10}}">{{hh}}</text>
+    <text wx:if="{{hh<10}}">0{{hh}}</text>:
+    <text wx:if="{{mm>=10}}">{{mm}}</text>
+    <text wx:if="{{mm<10}}">0{{mm}}</text>:
+    <text wx:if="{{ss>=10}}">{{ss}}</text>
+    <text wx:if="{{ss<10}}">0{{ss}}</text>
+  </view>
+</view>
+
+<view class='countdown_list'>
+  <view wx:for="{{ goodsList }}" wx:key="{{ index }}" wx:if="{{ index < 3 }}" class="countdown_list_showBox">
+    <navigator url='../detail/detail?id={{item.id}}'>
+      <image src='{{item.imgUrl}}' />
+    </navigator>
+    <view class='middleBox'>
+      <text class='goods_name'>{{item.name}}</text>
+      <view class='goods_price'>
+        <text class='goods_newPrice'>￥{{item.price}}</text>
+        <text class='goods_oldPrice'>￥{{item.privilegePrice}}</text>
+      </view>
+    </view>
+    <button bindtap='addToCart' data-id="{{item.id}}">+</button>
+  </view>
+</view>
+
+<navigator url='../showMore/showMore' class='showMore'>
+  <view class='middle_showmore'>
+    <text class='line'>——</text>
+    <text decode='nbsp'>&nbsp;&nbsp;查看更多&nbsp;&nbsp;</text>
+    <text class='line'>——</text>
+  </view>
+</navigator>
+
+<view class='ad'>
+  <image src='http://m.360buyimg.com/babel/jfs/t29377/232/546056587/187476/8fc8cf75/5bf67243N15177469.gif' />
+</view>
+
+<view class='countdown countdown2'>
+  <text class='countdown_txt'>优 鲜 惠</text>
+</view>
+
+<scroll-view scroll-x="true">
+  <view class="scroll-x">
+    <view wx:for-items="{{goodsList}}" wx:key="name" wx:key="{{ index }}" wx:if="{{ index > 2 && index < 10 }}" class="scroll_box">
+      <navigator url='../detail/detail?id={{item.id}}'>
+        <image src='{{item.imgUrl}}' class='scroll_img' />
+      </navigator>
+      <view class="scroll_name">{{item.name}}</view>
+      <view class='scroll_price'>
+        <text class='scroll_newPrice'>￥{{item.price}}</text>
+        <text class='scroll_btn' data-item='{{item.id}}' bindtap='addToCart' data-id='{{item.id}}'>+</text>
+      </view>
+      <text class='scroll_oldPrice'>￥{{item.privilegePrice}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+<view class='fourImg_box'>
+  <image src='http://m.360buyimg.com/babel/s719x407_jfs/t1/8120/20/1520/159224/5bcebdbdE8f2ad0d6/c20dd1d0397fe903.jpg!q70.dpg' class='fourImg' />
+  <image src='http://m.360buyimg.com/babel/s679x384_jfs/t1/1220/22/11282/110524/5bcebd39E7bebb921/59b63d7f5ce2ec47.jpg!q70.dpg' class='fourImg' />
+  <image src='http://m.360buyimg.com/babel/s719x407_jfs/t1/2860/18/11242/131012/5bcebd71E716b4d1e/7dc4b0432e841f59.jpg!q70.dpg' class='fourImg' />
+  <image src='http://m.360buyimg.com/babel/s679x384_jfs/t1/923/39/11536/131357/5bcebd87Ed416a82d/7715e98321f1a83b.jpg!q70.dpg' class='fourImg' />
+</view>
+
+<view class='itemList_container'>
+  <my-component data="{{tempData}}" bind:action="addToCart"></my-component>
+  <my-component data="{{tempData1}}" bind:action="addToCart"></my-component>
+  <my-component data="{{tempData2}}" bind:action="addToCart"></my-component>
+</view>
+
+<view class='main-end'>-- 刷到底了哦！--</view>

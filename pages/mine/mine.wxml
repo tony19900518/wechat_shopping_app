@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class='top {{(!hasUserInfo && canIUse)?"middle":""}}'>
+  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn'>授权登录</button>
+  <block wx:else>
+    <view class='userBox'>
+      <view class='userBox_left'>
+        <image bindtap="bindViewTap" class="user" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class='nickname'>{{userInfo.nickName}}</text>
+      </view>
+      <view class='qr_box'>
+        <image src='/img/QR.png'></image>
+        <text>会员码</text>
+      </view>
+    </view>
+  </block>
+
+</view>
+<view class='list'>
+  <view class='list_item' wx:for="{{array}}" bindtap='{{item.bindtap}}'>
+    <image src="{{item.src}}"></image>
+    <text>{{item.text}}</text>
+    <text wx:if="{{item.bindtap == 'call'}}" class='call_text'>服务时间：9:00-21:00</text>
+    <image src='/img/arrows.png'></image>
+  </view>
+</view>

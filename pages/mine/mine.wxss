@@ -1,0 +1,89 @@
+/**test.wxss**/
+
+page {
+  display: block;
+  min-height: 100%;
+  background-color: gainsboro;
+}
+
+.userBox {
+  display: flex;
+  justify-content: space-around;
+  height: 300rpx;
+  align-items: center;
+}
+
+.userBox_left {
+  display: flex;
+  align-items: center;
+}
+
+.top {
+  background-color: #f9916c;
+  height: 300rpx;
+}
+
+.qr_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr_box>image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 15rpx;
+}
+
+.qr_box>text {
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.user {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50rpx;
+  margin-right: 30rpx;
+}
+
+.nickname {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.list_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  border-bottom: 2px solid #f4f4f4;
+  background-color: #fff;
+}
+
+.list_item>image {
+  height: 30rpx;
+  width: 30rpx;
+}
+
+.list_item>text {
+  flex: 2;
+  padding-left: 20rpx;
+  font-size: 28rpx;
+}
+
+.btn {
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 32rpx;
+}
+
+.call_text {
+  color: #b7b6bc;
+}
+
+.middle {
+  padding-top: 110rpx;
+  box-sizing: border-box;
+}

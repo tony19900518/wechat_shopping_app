@@ -1,0 +1,14 @@
+<image src='{{data.title_img}}' class='tempImg' />
+<view class='scroll_container temp'>
+  <view wx:for-items="{{data.goodsList}}" wx:key="index" wx:if="{{ index < data.max && index >= data.min }}" class="scroll_box">
+    <navigator url='../detail/detail?id={{item.id}}'>
+      <image src='{{item.imgUrl}}' class='scroll_img' />
+    </navigator>
+    <view class="scroll_name">{{item.name}}</view>
+    <view class='scroll_price'>
+      <text class='scroll_newPrice'>￥{{item.price}}</text>
+      <text class='scroll_btn' bindtap='addToCart' data-id="{{item.id}}">+</text>
+    </view>
+    <text class='scroll_oldPrice'>￥{{item.privilegePrice}}</text>
+  </view>
+</view>

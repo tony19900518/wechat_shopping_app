@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-component": "/components/my-component"
+  },
+  "navigationBarTitleText": "轻松购首页"
+}

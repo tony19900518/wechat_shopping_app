@@ -1,0 +1,51 @@
+<view wx:if="{{listLen.length>0}}">
+  <view class='cart_header'>
+    <view>世纪联华上海黄浦店</view>
+    <view>
+      <text>满减</text>
+      <text>到家全程满99元立减15元</text>
+    </view>
+  </view>
+
+  <view class='countdown_list'>
+    <checkbox-group bindchange="checkboxChange">
+      <view wx:for="{{cartItem}}" wx:key="{{index}}" class="countdown_list_showBox" wx:if="{{cartItemId[index]!=0}}">
+        <view class="countdown_list_container {{moveToLeft[index]?'moveLeft':'moveRight'}}" data-index='{{index}}' bindtouchstart='touchStart' bindtouchend='touchEnd'>
+          <checkbox value="{{item.id}}" checked="{{checked[index]}}" class='item_checkbox' bindtap='changeItem' data-index="{{index}}" />
+          <navigator url='../detail/detail?id={{item.id}}'>
+            <image src='{{item.imgUrl}}' />
+          </navigator>
+          <view class='middleBox'>
+            <text class='goods_name'>{{item.name}}</text>
+            <view class='goods_price'>
+              <text class='goods_newPrice'>￥{{item.price}}</text>
+              <view class='btnAndNum'>
+                <view bindtap='reduceNum' data-index="{{index}}" data-id="{{item.id}}" class='button'>-</view>
+                <view class='item_num'>{{cartItemId[index]}}</view>
+                <view bindtap='increaseNum' data-index="{{index}}" data-id="{{item.id}}" class='button'>+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="deleteItem {{moveToLeft[index]?'moveLeft':'moveRight'}}" data-id='{{item.id}}' data-index='{{index}}' bindtap='deleteItem'>删除</view>
+      </view>
+    </checkbox-group>
+  </view>
+
+  <view class='cart_bottom'>
+    <view class='cart_bottom_left'>
+      <checkbox value="all" checked="{{checkedAll}}" bindtap='checkAll' />
+      <text>全选</text>
+    </view>
+    <view class='cart_bottom_middle'>
+      <text class='finalPrice'>合计:￥{{finalPrice}}</text>
+      <text decode='nbsp' class='totalPrice'>\n总额:￥{{totalPrice}}&nbsp;&nbsp;已优惠:￥{{discount}}</text>
+    </view>
+    <button class='cart_bottom_right'>去结算</button>
+  </view>
+</view>
+<view class='emptyCart' wx:else>
+  <image src='//img11.360buyimg.com/jdphoto/s180x180_jfs/t18163/292/540553659/74408/adeb7463/5a93c51cN3bb5e37b.png' />
+  <text>购物车空空如也</text>
+  <navigator url="/pages/home/home" open-type="switchTab" class='toBuy'>去逛逛</navigator>
+</view>
